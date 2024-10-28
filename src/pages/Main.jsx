@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { config } from '../data/contant'
 
 function MainPage() {
     const [movieList, setMoiveList] = useState([])
 
     useEffect(() => {
-        fetch('https://api.themoviedb.org/3/movie/popular?language=ko-KR&api_key=ac770053b0b8a5509c03c3d6e2110597')
+        fetch(`https://api.themoviedb.org/3/movie/popular?language=ko-KR&api_key=${config.API_KEY}`)
             .then((res) => res.json())
             .then((res) => {
                 setMoiveList(res.results)
