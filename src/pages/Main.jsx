@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { config } from '../data/contant'
+import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 function MainPage() {
     const [movieList, setMoiveList] = useState([])
@@ -14,20 +16,29 @@ function MainPage() {
     }, [])
     return (
         <>
-            <div>
-                <ul>
-                    {movieList.map((movie) => (
-                        <li key={movie.id}>
-                            <img
-                                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                                width={200}
-                                height={200}
-                                alt="썸네일"
-                            />
-                            <Link to={`/detail/${movie.id}`}>{movie.original_title}</Link>
-                        </li>
-                    ))}
-                </ul>
+            <div className="flex justify-center items-center">
+                <div className="flex items-center">
+                    <Carousel showThumbs autoPlay infiniteLoop showStatus={false} transitionTime={5}>
+                        {movieList.map((movie) => (
+                            <Link to={`/detail/${movie.id}`} className="relative">
+                                <div className="h-[calc(100vh-80px)">
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                                        alt="썸네일"
+                                        className="block"
+                                    />
+                                </div>
+                                <div className="absolute bottom-0 w-full text-left p-20 bg-gradient-to-t from-black to-transparent text-white">
+                                    <h5 className="text-4xl">{movie.original_title}</h5>
+                                    <p className="text-base felx items-center gap-3 my-5">
+                                        {movie.release_date} / 🌟 {movie.vote_average}
+                                    </p>
+                                    <p className="italic w-4/6">{movie.orverview}</p>
+                                </div>
+                            </Link>
+                        ))}
+                    </Carousel>
+                </div>
             </div>
         </>
     )
