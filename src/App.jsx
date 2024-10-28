@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
 import Main from './pages/Main'
-import Sub from './pages/Sub'
-import Detail from './pages/Detail'
 import Nav from './components/Nav'
+import MovieList from './pages/MovieList'
+import MovieDetail from './pages/MovieDetail'
 
 function App() {
     return (
@@ -10,8 +10,8 @@ function App() {
             <Nav />
             <Routes>
                 <Route index element={<Main />}></Route>
-                <Route path="/sub" element={<Sub />}></Route>
-                <Route path="/detail/:id" element={<Detail />}></Route>
+                <Route path="/list/:type" element={<MovieList />}></Route>
+                <Route path="/detail/:id" element={<MovieDetail />}></Route>
             </Routes>
         </BrowserRouter>
     )
