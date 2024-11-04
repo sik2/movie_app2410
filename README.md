@@ -9,3 +9,23 @@
 -   [ ] 상세페이지 스타일 작업
 -   [ ] 서브페이지 슬라이드, 스타일 작업
 -   [ ] 검색기능
+
+## 테일윈드 적용
+
+-   [vite + tailwindcss](https://tailwindcss.com/docs/guides/vite)
+
+```js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from 'tailwindcss'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+    plugins: [react()],
+    css: {
+        postcss: {
+            plugins: [tailwindcss()],
+        },
+    },
+})
+```
