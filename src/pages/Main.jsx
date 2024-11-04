@@ -21,7 +21,7 @@ function MainPage() {
                     <Carousel showThumbs autoPlay infiniteLoop showStatus={false} transitionTime={5}>
                         {movieList.map((movie) => (
                             <Link to={`/detail/${movie.id}`} className="relative">
-                                <div className="h-[calc(100vh-80px)">
+                                <div className="h-[900px]">
                                     <img
                                         src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                                         alt="썸네일"

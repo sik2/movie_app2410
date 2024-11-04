@@ -1,61 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Tailwind CSS Equivalent */
 
-/* 글꼴 및 기본 스타일 적용 */
-.font-custom {
-    @apply font-sans text-white;
-    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
-        'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 7px;
 }
 
-/* 박스 크기 및 스크롤 스타일 */
-* {
-    @apply box-border;
-    scroll-behavior: smooth;
+::-webkit-scrollbar-track {
+    background: theme('colors.scrollbarTrack');
+    border-radius: 10px;
 }
 
-/* 스크롤바 스타일 */
-.scrollbar {
-    &::-webkit-scrollbar {
-        width: 5px;
-        height: 7px;
-    }
-    &::-webkit-scrollbar-track {
-        @apply bg-gray-200 rounded-lg;
-    }
-    &::-webkit-scrollbar-thumb {
-        @apply bg-gray-400 rounded-lg transition duration-300 cursor-pointer;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-        @apply bg-gray-600;
-    }
-    &::-webkit-scrollbar-thumb:active {
-        @apply bg-gray-700 cursor-pointer;
-    }
+::-webkit-scrollbar-thumb {
+    background: theme('colors.scrollbarThumb');
+    border-radius: 10px;
+    transition: 0.3s;
 }
 
-/* HTML 및 Body 스타일 */
-html,
-body {
-    @apply m-0 p-0 w-full h-full overflow-auto bg-black;
-    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-        'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.scrollbarThumbHover');
 }
 
-/* 공통 텍스트 요소 */
-h1,
-h2,
-h3,
-h4,
-h5,
-ul,
-li,
-a,
-s,
-p {
-    @apply p-0 m-0 list-none text-inherit no-underline;
+::-webkit-scrollbar-thumb:active {
+    background: theme('colors.scrollbarThumbActive');
 }
