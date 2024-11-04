@@ -3,6 +3,7 @@ import { config } from '../data/contant'
 import { Link, useParams } from 'react-router-dom'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import SearBox from '../components/SearBox'
+import Card from '../components/Card'
 
 function MovieList() {
     const param = useParams()
@@ -29,27 +30,9 @@ function MovieList() {
             <div className="flex flex-wrap justify-center">
                 {movieList
                     .filter((movie) => movie.original_title.toLowerCase().includes(keyword.toLowerCase()))
-                    .map((movie) =>
-                        loading ? (
-                            <div className="m-3" key={movie.id}>
-                                <SkeletonTheme baseColor="#202020" highlightColor="#444">
-                                    <Skeleton width={200} height={200} duration={2} />
-                                </SkeletonTheme>
-                            </div>
-                        ) : (
-                            <div className="m-3" key={movie.id}>
-                                <Link to={`/detail/${movie.id}`}>
-                                    <img
-                                        src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                                        width={200}
-                                        height={200}
-                                        alt="썸네일"
-                                    />
-                                    <p>{movie.original_title}</p>
-                                </Link>
-                            </div>
-                        ),
-                    )}
+                    .map((movie) => (
+                        <Card key={movie.id} movie={movie} />
+                    ))}
             </div>
         </div>
     )
